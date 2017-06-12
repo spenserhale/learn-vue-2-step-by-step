@@ -14,9 +14,9 @@
 
     </ul>
 
-    <input id="input" type="text">
+    <input v-model="newName" type="text">
 
-    <button id="button">Add Name</button>
+    <button v-on:click="addName">Add Name</button>
 
 </div>
 
@@ -27,17 +27,15 @@
     let app = new Vue({
         el: '#root',
         data: {
+            newName: '',
             names: ['Joe','Mary','Jane','Jack']
         },
-        mounted() {
-            document.querySelector('#button').addEventListener('click', () => {
-                let name = document.querySelector('#input');
-
-                app.names.push(name.value);
-
-                name.value = '';
-            })
-        }
+	    methods: {
+            addName() {
+                this.names.push( this.newName );
+                this.newName = '';
+            }
+	    },
     });
 
 </script>
