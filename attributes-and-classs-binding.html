@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Vue 2 Step by Step</title>
+
+	<style>
+		.is-loading {
+			color:yellow;
+		}
+		.color-red {
+			color:red;
+		}
+		.color-blue {
+			color:blue;
+		}
+	</style>
+
 </head>
 <body>
 
 <div id="root">
 
-	<button :title="title">Button</button>
+	<button :class="{ 'is-loading': isLoading }" :title="title" @click="toggleClass">Button</button>
 
 </div>
 
@@ -19,8 +32,14 @@
     let app = new Vue({
         el: '#root',
         data: {
-            title: 'Title'
+            title: 'Title',
+	        isLoading: false
         },
+	    methods: {
+            toggleClass() {
+                this.isLoading = true;
+            }
+	    }
     });
 
 </script>
