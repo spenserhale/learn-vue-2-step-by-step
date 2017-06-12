@@ -23,6 +23,8 @@
 
 	<button :class="{ 'is-loading': isLoading }" :title="title" @click="toggleClass">Button</button>
 
+	<button :disabled="otherButtonDisabled">Other Button</button>
+
 </div>
 
 <script src="https://unpkg.com/vue@2.3.4"></script>
@@ -33,11 +35,13 @@
         el: '#root',
         data: {
             title: 'Title',
-	        isLoading: false
+	        isLoading: false,
+            otherButtonDisabled: false
         },
 	    methods: {
             toggleClass() {
                 this.isLoading = true;
+                this.otherButtonDisabled = true;
             }
 	    }
     });
