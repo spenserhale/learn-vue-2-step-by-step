@@ -8,17 +8,53 @@
 
 <div id="root">
 
-	<task>Go the store</task>
-
-	<task>Go the bank</task>
-
-	<task>Go to work</task>
+	<task-list></task-list>
 
 </div>
 
 <script src="https://unpkg.com/vue@2.3.4"></script>
 
 <script>
+
+	Vue.component('task-list', {
+
+        template: `
+			<ul class="task-list">
+				<task v-for="task in tasks" :key="task.id">{{task.description}}</task>
+			</ul>`,
+
+		data() {
+
+            return {
+
+                tasks: [
+                    {
+                        description: 'Go to store',
+                        completed: true
+                    },
+                    {
+                        description: 'Go home',
+                        completed: false
+                    },
+                    {
+                        description: 'Study Homework',
+                        completed: true
+                    },
+                    {
+                        description: 'Pay bills',
+                        completed: false
+                    },
+                    {
+                        description: 'Finish tutorial',
+                        completed: false
+                    },
+                ]
+
+            }
+
+		}
+
+	});
 
 	Vue.component('task', {
 
