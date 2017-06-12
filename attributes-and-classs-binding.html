@@ -8,7 +8,7 @@
 
 <div id="root">
 
-
+	<button v-bind:title="title">Button</button>
 
 </div>
 
@@ -19,6 +19,7 @@
     let app = new Vue({
         el: '#root',
         data: {
+            title: 'Title'
         },
     });
 
