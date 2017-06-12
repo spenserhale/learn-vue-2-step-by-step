@@ -12,6 +12,38 @@
 		{{reversedHeading}}
 	</h1>
 
+	<h1> Computed based examples </h1>
+
+	<h2> Incomplete Tasks </h2>
+
+	<ul>
+
+		<li v-for="task in incompleteTasks" v-text="task.description"></li>
+
+	</ul>
+
+	<hr>
+
+	<h1> If based Examples </h1>
+
+	<h2> All Tasks </h2>
+
+	<ul>
+
+		<li v-for="task in tasks" v-text="task.description"></li>
+
+	</ul>
+
+	<h2> Incomplete Tasks </h2>
+
+	<ul>
+
+		<li v-for="task in tasks" v-if="!task.completed" v-text="task.description"></li>
+
+	</ul>
+
+	<h2> Complete Tasks </h2>
+
 	<ul>
 
 		<li v-for="task in tasks" v-if="task.completed" v-text="task.description"></li>
@@ -24,7 +56,7 @@
 
 <script>
 
-    new Vue({
+    let app = new Vue({
         el: '#root',
         data: {
             heading: 'Hello World',
@@ -52,6 +84,9 @@
 	        ]
         },
         computed: {
+            incompleteTasks() {
+				return this.tasks.filter(task => ! task.completed);
+            },
             reversedHeading() {
                 return this.heading.split('').reverse().join('');
             }
